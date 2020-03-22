@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head') %>
+</head>
+
+<body>
+    <%- include('../partials/navbar') %>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 offset-md-4">
+                    <form class="form-inline" action="/" method="POST">
+                        <div class="input-group my-5 py-5">
+                            <div class="input-group-prepend mb-2">
+                                <div class="input-group-text">
+                                    <i class="fas fa-globe-europe"></i>
+                                </div>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Country.." name="country" value="<%=input %>" />
+                            <button type="submit" class="btn btn-primary mb-2 ">
+                Search
+              </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <%if(data){%>
+            <div class="container">
+                <div class="row">
+                    <%data.covid19Stats.forEach(function(data){ %>
+                        <div class="col-md-6">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5>
+                                        <i class="fas fa-globe-europe"></i>
+                                        <%=data.province%>,
+                                            <%=data.country%>
+                                    </h5>
+
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        <ul class="list-group">
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                <i class="fas fa-briefcase-medical"></i>Confirmed Cases
+                                                <span class="badge badge-primary badge-pill"><%=data.confirmed%></span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                <i class="fas fa-skull-crossbones"></i>Deaths
+                                                <span class="badge badge-primary badge-pill"><%=data.deaths%></span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                <i class="fas fa-user-shield"></i> Recovered
+                                                <span class="badge badge-primary badge-pill">
+                                                    <%=data.recovered%></span>
+                                            </li>
+                                        </ul>
+
+
+                                    </p>
+                                </div>
+                                <div class="card-footer text-muted">
+                                    <%=time%>
+                                </div>
+                            </div>
+                        </div>
+
+                        <%})%>
+                </div>
+            </div>
+            <%}%>
+</body>
+
+<%- include('../partials/footer') %>
+
+    <script>
+        // removing the alert tag here
+        setTimeout(() => {
+            document.querySelector(".alert").remove();
+        }, 2000);
+    </script>
+
+</html>
