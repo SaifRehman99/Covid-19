@@ -7,6 +7,7 @@ const flash = require("connect-flash");
 const axios = require("axios");
 const path = require("path");
 const moment = require("moment");
+var MemoryStore = require("session-memory-store")(session);
 
 app.set("view engine", "ejs");
 app.set("views", "views");
@@ -21,7 +22,8 @@ app.use(
     session({
         secret: "keyboard cat",
         resave: false,
-        saveUninitialized: false
+        saveUninitialized: false,
+        store: new MemoryStore(10)
     })
 );
 
