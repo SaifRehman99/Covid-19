@@ -92,7 +92,7 @@ app.post("/", (req, res) => {
         });
 });
 
-const PORT = 8336 || process.env.PORT;
+const PORT = process.env.PORT;
 
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`);
