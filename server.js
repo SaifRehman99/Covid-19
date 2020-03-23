@@ -48,8 +48,8 @@ app.get("/", (req, res) => {
 
 app.post("/", (req, res) => {
     const country = req.body.country;
-    const upperCase = country.charAt(0).toUpperCase();
-    const lowerCase = country.slice(1).toLowerCase();
+    // const upperCase = country.charAt(0).toUpperCase();
+    // const lowerCase = country.slice(2).toLowerCase();
 
     if (!req.body.country) {
         return res.render("pages/index", {
@@ -61,7 +61,7 @@ app.post("/", (req, res) => {
     }
     axios
         .get(
-            `https://covid-19-coronavirus-statistics.p.rapidapi.com/v1/stats?country=${upperCase}${lowerCase}`, {
+            `https://covid-19-coronavirus-statistics.p.rapidapi.com/v1/stats?country=${country}`, {
                 headers: {
                     "content-type": "application/octet-stream",
                     "x-rapidapi-host": process.env.HOST,
@@ -92,7 +92,7 @@ app.post("/", (req, res) => {
         });
 });
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8666;
 
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`);
