@@ -48,6 +48,7 @@ app.get("/", (req, res) => {
 
 app.post("/", (req, res) => {
     const country = req.body.country;
+    let queryData = [];
     // const upperCase = country.charAt(0).toUpperCase();
     // const lowerCase = country.slice(2).toLowerCase();
 
