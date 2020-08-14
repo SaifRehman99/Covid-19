@@ -6,7 +6,10 @@ import cs from 'classnames';
 
 import style from './Cards.module.css';
 
-const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
+const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate }, getCardData }) => {
+
+
+
   return (
     <div className={style.container}>
       {confirmed === undefined ? (
@@ -20,6 +23,7 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
       ) : (
         <Grid container spacing={3} justify='center'>
           <Grid
+            onClick={() => getCardData('cases')}
             item
             component={Card}
             xs={12}
@@ -46,6 +50,8 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
             </CardContent>
           </Grid>
           <Grid
+          onClick={() =>getCardData('recovered')}
+
             item
             component={Card}
             xs={12}
@@ -72,6 +78,7 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
             </CardContent>
           </Grid>
           <Grid
+          onClick={() => getCardData('deaths')}
             item
             component={Card}
             xs={12}
